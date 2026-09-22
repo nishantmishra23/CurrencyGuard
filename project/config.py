@@ -1,10 +1,15 @@
 import os
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
 
 # API Settings
-API_KEY = os.getenv("TWELVEDATA_API_KEY")
+try:
+    API_KEY = st.secrets.get("TWELVEDATA_API_KEY", os.getenv("TWELVEDATA_API_KEY"))
+except FileNotFoundError:
+    API_KEY = os.getenv("TWELVEDATA_API_KEY")
+
 TWELVEDATA_BASE_URL = "https://api.twelvedata.com"
 
 # Application Settings
