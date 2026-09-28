@@ -974,7 +974,8 @@ if menu == "📊 Dashboard":
             matrix_rows.append(row)
 
         df_matrix = pd.DataFrame(matrix_rows, index=matrix_curr[:6])
-        st.dataframe(df_matrix.style.format("{:.4f}").background_gradient(cmap="Blues", axis=None), use_container_width=True)
+        # Display clean formatted matrix without requiring external matplotlib dependency
+        st.dataframe(df_matrix.style.format("{:.4f}"), use_container_width=True)
 
         # Macro commentary cards
         st.markdown("### 📰 Macro Market Signals")
